@@ -1,0 +1,26 @@
+[
+  {
+    "name": "PM Kisan Samman Nidhi",
+    "description": "Financial support to small and marginal farmers.",
+    "applyLink": "https://pmkisan.gov.in/",
+    "eligibility": {
+      "age": { "min": 18, "max": 60 },
+      "caste": ["Any"],
+      "religion": ["Any"],
+      "occupation": ["Farmer"],  
+      "income": { "max": 250000 }
+    }
+  },
+  {
+    "name": "National Scholarship Portal",
+    "description": "Scholarships for students in higher education.",
+    "applyLink": "https://scholarships.gov.in/",
+    "eligibility": {
+      "age": { "min": 17, "max": 30 },
+      "caste": ["SC", "ST", "OBC", "General"],
+      "religion": ["Any"],
+      "occupation": ["Student"],
+      "income": { "max": 800000 }
+    }
+  }
+]
