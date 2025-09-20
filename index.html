@@ -1,2 +1,306 @@
-hello
-ok
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PM Scheme Portal - SIH Prototype</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,300;1,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow">
+    <div class="container-fluid">
+      <img src="Gemini_Generated_Image_cy6a25cy6a25cy6a-removebg-preview.png" alt="" height="50">
+      <a class="navbar-brand fw-bold" href="#">Madadgaar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#schemes">Schemes</a></li>
+          <li class="nav-item"><a class="nav-link" href="internship.html">Internships</a></li>
+          <li class="nav-item"><a class="nav-link" href="#notices">Notices</a></li>
+          <li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" class="text-center text-white bg-primary py-5">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Welcome to PM Scheme Portal</h1>
+      <p class="lead fw-bold text-">Find government schemes and internships tailored to you</p>
+    </div>
+  </section>
+
+  <section id="schemes" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4 fw-bold">Find Eligible Schemes</h2>
+      <form id="schemeForm" class="row g-3 bg-white p-4 rounded shadow">
+        <div class="col-md-2">
+          <input type="number" id="age" class="form-control" placeholder="Age">
+        </div>
+        <div class="col-md-2">
+          <select id="caste" class="form-select">
+            <option value="">Caste</option>
+            <option>General</option>
+            <option>OBC</option>
+            <option>SC</option>
+            <option>ST</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <select id="religion" class="form-select">
+            <option value="">Religion</option>
+            <option>Hindu</option>
+            <option>Muslim</option>
+            <option>Christian</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <select id="occupation" class="form-select">
+            <option value="">Occupation</option>
+            <option>Student</option>
+            <option>Farmer</option>
+            <option>Worker</option>
+            <option>Unemployed</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <input type="number" id="income" class="form-control" placeholder="Annual Income (₹)">
+        </div>
+        <div class="col-md-2">
+          <button type="button" id="schemeBtn" class="btn btn-primary w-100">Find Schemes</button>
+        </div>
+      </form>
+      <div id="schemeResults" class="row mt-4 g-3"></div>
+    </div>
+  </section>
+
+  <section id="notices" class="bg-light py-5">
+    <div class="container">
+      <h2 class="text-center mb-4 fw-bold">Latest Notices</h2>
+      <ul id="noticesList" class="list-group"></ul>
+    </div>
+  </section>
+
+  <section id="profile" class="py-5">
+    <div class="container">
+      <div class="card shadow">
+        <div class="card-body">
+          <h2 class="card-title mb-4 fw-bold">Your Profile</h2>
+          <form id="profileForm" class="row g-3">
+            <div class="col-md-6">
+              <input type="text" id="pName" class="form-control" placeholder="Full Name">
+            </div>
+            <div class="col-md-6">
+              <input type="number" id="pAge" class="form-control" placeholder="Age">
+            </div>
+            <div class="col-md-6">
+              <select id="pStatus" class="form-select">
+                <option value="">Status</option>
+                <option>Student</option>
+                <option>Employed</option>
+                <option>Unemployed</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <input type="text" id="pCourse" class="form-control" placeholder="Course (e.g. B.Tech)">
+            </div>
+            <div class="col-md-6">
+              <input type="text" id="pYear" class="form-control" placeholder="Year (e.g. 2nd)">
+            </div>
+            <div class="col-md-6">
+              <input type="number" id="pIncome" class="form-control" placeholder="Annual Income (₹)">
+            </div>
+          </form>
+          <button id="saveProfileBtn" class="btn btn-success mt-3">Save Profile</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-white pt-5 pb-3 mt-5" style="background: linear-gradient(135deg, #0b1220, #0969da);">
+    <div class="container">
+      <div class="row">
+
+        <!-- About -->
+        <div class="col-md-4 mb-3">
+          <h5 class="fw-bold">PM Scheme Portal</h5>
+          <p class="small">
+            A unified portal to help citizens discover and apply for Government of India schemes and internships
+            based on eligibility. Prototype developed for Smart India Hackathon (SIH).
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-md-4 mb-3">
+          <h5 class="fw-bold">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#home" class="footer-link">Home</a></li>
+            <li><a href="#schemes" class="footer-link">Schemes</a></li>
+            <li><a href="internships.html" class="footer-link">Internships</a></li>
+            <li><a href="#notices" class="footer-link">Notices</a></li>
+            <li><a href="#profile" class="footer-link">Profile</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="col-md-4 mb-3">
+          <h5 class="fw-bold">Contact Us</h5>
+          <p class="small mb-1"><i class="bi bi-geo-alt"></i> Ministry of Electronics & IT, New Delhi</p>
+          <p class="small mb-1"><i class="bi bi-envelope"></i> support@pmscheme.gov.in</p>
+          <p class="small mb-3"><i class="bi bi-telephone"></i> +91-1800-123-456</p>
+          <div>
+            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-light">
+
+      <!-- Bottom -->
+      <div class="text-center small">
+        © <span id="year"></span> PM Scheme Portal | Designed for <strong>Smart India Hackathon</strong>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="btn btn-primary rounded-circle">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    .footer-link {
+      color: #f1f1f1;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-link:hover {
+      color: #ffd43b;
+    }
+
+    .social-icon {
+      color: #fff;
+      margin-right: 12px;
+      font-size: 20px;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .social-icon:hover {
+      transform: scale(1.2);
+      color: #ffd43b;
+    }
+
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 999;
+    }
+  </style>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Back to top button
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 200) {
+        backToTop.style.display = "block";
+      } else {
+        backToTop.style.display = "none";
+      }
+    });
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+
+  <!-- Bootstrap + Script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let SCHEMES = [], NOTICES = [];
+
+    async function loadData() {
+      const schemeRes = await fetch("schemes.json");
+      SCHEMES = await schemeRes.json();
+      const noticeRes = await fetch("notices.json");
+      NOTICES = await noticeRes.json();
+      renderNotices();
+    }
+
+    function renderNotices() {
+      const list = document.getElementById("noticesList");
+      list.innerHTML = NOTICES.map(n =>
+        `<li class="list-group-item"><strong>${n.title}</strong> <br><small>${n.date}</small></li>`
+      ).join("");
+    }
+
+    document.getElementById("schemeBtn").addEventListener("click", () => {
+      const age = parseInt(document.getElementById("age").value);
+      const caste = document.getElementById("caste").value;
+      const religion = document.getElementById("religion").value;
+      const occupation = document.getElementById("occupation").value;
+      const income = parseInt(document.getElementById("income").value);
+
+      const results = SCHEMES.filter(s =>
+        (s.eligibility.age.min <= age && age <= s.eligibility.age.max) &&
+        (s.eligibility.caste.includes(caste) || s.eligibility.caste.includes("Any")) &&
+        (s.eligibility.religion.includes(religion) || s.eligibility.religion.includes("Any")) &&
+        (s.eligibility.occupation.includes(occupation) || s.eligibility.occupation.includes("Any")) &&
+        (income <= s.eligibility.income.max)
+      );
+
+      const container = document.getElementById("schemeResults");
+      container.innerHTML = results.length ?
+        results.map(s => `
+          <div class="col-md-6">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">${s.name}</h5>
+                <p class="card-text">${s.description}</p>
+                <a href="${s.applyLink}" target="_blank" class="btn btn-outline-primary mt-2">Apply Now</a>
+              </div>
+            </div>
+          </div>`).join("")
+        : `<p class="text-muted">No matching schemes found.</p>`;
+    });
+
+    document.getElementById("saveProfileBtn").addEventListener("click", () => {
+      const profile = {
+        name: document.getElementById("pName").value,
+        age: document.getElementById("pAge").value,
+        status: document.getElementById("pStatus").value,
+        course: document.getElementById("pCourse").value,
+        year: document.getElementById("pYear").value,
+        income: document.getElementById("pIncome").value
+      };
+      localStorage.setItem("userProfile", JSON.stringify(profile));
+      alert("Profile saved!");
+    });
+
+    loadData();
+  </script>
+</body>
+
+</html>
