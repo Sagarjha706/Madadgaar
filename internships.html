@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,300;1,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            font-family: poppins, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+        }
+
+        #internship-results .card {
+            transition: transform 0.2s ease;
+        }
+
+        #internship-results .card:hover {
+            transform: translateY(-5px);
+        }
+
+        footer {
+            background: #343a40;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow">
+        <div class="container-fluid">
+            <img src="Gemini_Generated_Image_cy6a25cy6a25cy6a-removebg-preview.png" alt="" height="50">
+            <a class="navbar-brand fw-bold" href="#">Madadgaar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#schemes">Schemes</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="internship.html">Internships</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#notices">Notices</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="banner" class="text-white d-flex align-items-center" style="background: url('https://imphalreviews.in/wp-content/uploads/2021/05/DRDO.jpg') center/cover no-repeat; 
+                  height: 50vh; position: relative;">
+        <div style="background: rgba(0,0,0,0.7); position: absolute; top: 0; right: 0; bottom: 0; left: 0;"></div>
+        <div class="container text-center position-relative">
+            <h1 class="display-4 fw-bold">Internship Opportunities</h1>
+            <p class="lead">Explore internships from ISRO, DRDO, and Government Programs</p>
+            <a href="#internship-form" class="btn btn-warning btn-lg mt-3">Get Started</a>
+        </div>
+    </section>
+    <!-- Internship Filter Section -->
+    <section class="container py-5">
+          <h2 class="text-center mb-4 fw-bold pb-4">Find Internship Opportunities</h2>
+        <form id="internship-form" class="row g-3 bg-light p-4 rounded shadow-lg">
+            <div class="col-md-6">
+                <label class="form-label">Name</label>
+                <input type="text" id="name" class="form-control" placeholder="Enter your name">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Age</label>
+                <input type="number" id="age" class="form-control" placeholder="18">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Status</label>
+                <select id="status" class="form-select">
+                    <option value="">Choose...</option>
+                    <option value="student">Student</option>
+                    <option value="graduate">Graduate</option>
+                    <option value="job-seeker">Job Seeker</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Field of Interest</label>
+                <input type="text" id="interest" class="form-control" placeholder="IT, Management, Design...">
+            </div>
+            <div class="col-12 text-center">
+                <button type="button" class="btn btn-primary mt-3" onclick="findInternships()">Find Internships</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Internship Results -->
+    <section class="container py-4">
+        <h3 class="mb-3">Available Internships</h3>
+        <div class="row" id="internship-results"></div>
+    </section>
+
+    <!-- Footer -->
+<footer class="bg-dark text-white text-center py-4">
+  <div class="container">
+    <p class="mb-2">&copy; 2025 PM Scheme Portal | All Rights Reserved</p>
+    <a href="#home" class="text-white me-3">Home</a>
+    <a href="#help" class="text-white me-3">Help</a>
+    <a href="#notices" class="text-white me-3">Notices</a>
+    <a href="#profile" class="text-white">Profile</a>
+  </div>
+</footer>
+
+
+    <script>
+
+        async function findInternships() {
+            const response = await fetch('internships.json');
+            const internships = await response.json();
+
+            const age = document.getElementById("age").value;
+            const status = document.getElementById("status").value;
+            const interest = document.getElementById("interest").value.toLowerCase();
+
+            const results = document.getElementById("internship-results");
+            results.innerHTML = "";
+
+            let filtered = internships.filter(intern => {
+                return (!age || intern.minAge <= age) &&
+                    (!status || intern.eligibleStatus.includes(status)) &&
+                    (!interest || intern.field.toLowerCase().includes(interest));
+            });
+
+            if (filtered.length === 0) {
+                results.innerHTML = `<p class="text-danger fw-bold">No internships found for your criteria.</p>`;
+            } else {
+                filtered.forEach(intern => {
+                    results.innerHTML += `
+            <div class="col-md-4">
+              <div class="card mb-3 shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">${intern.title}</h5>
+                  <p class="card-text">${intern.description}</p>
+                  <p><strong>Field:</strong> ${intern.field}</p>
+                  <p><strong>Duration:</strong> ${intern.duration}</p>
+                  <a href="${intern.link}" target="_blank" class="btn btn-success btn-sm">Apply Now</a>
+                </div>
+              </div>
+            </div>`;
+                });
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
