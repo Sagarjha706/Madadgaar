@@ -1,0 +1,65 @@
+[
+  {
+    "title": "Web Development Internship",
+    "description": "Hands-on experience in front-end and back-end development.",
+    "field": "IT",
+    "duration": "3 Months",
+    "minAge": 18,
+    "eligibleStatus": ["student", "graduate"],
+    "link": "https://internship.gov.in/web-development"
+  },
+  {
+    "title": "Business Management Internship",
+    "description": "Learn strategy, marketing, and operations with live projects.",
+    "field": "Management",
+    "duration": "2 Months",
+    "minAge": 20,
+    "eligibleStatus": ["graduate", "job-seeker"],
+    "link": "https://internship.gov.in/business-management"
+  },
+  {
+    "title": "Design & UI Internship",
+    "description": "Work on creative UI/UX design projects for real clients.",
+    "field": "Design",
+    "duration": "1 Month",
+    "minAge": 18,
+    "eligibleStatus": ["student"],
+    "link": "https://internship.gov.in/design-ui"
+  },
+  {
+    "title": "ISRO Space Research Internship",
+    "description": "Opportunity to work on satellite data analysis, space technology, and research projects at ISRO.",
+    "field": "Aerospace / Space Technology",
+    "duration": "6 Months",
+    "minAge": 21,
+    "eligibleStatus": ["graduate", "job-seeker"],
+    "link": "https://www.isro.gov.in/internship"
+  },
+  {
+    "title": "DRDO Defence Research Internship",
+    "description": "Work on defence R&D projects including AI, robotics, and advanced weapon systems at DRDO labs.",
+    "field": "Defence Technology / AI",
+    "duration": "4 Months",
+    "minAge": 21,
+    "eligibleStatus": ["graduate", "job-seeker"],
+    "link": "https://www.drdo.gov.in/careers"
+  },
+  {
+    "title": "ISRO Software & Data Science Internship",
+    "description": "Contribute to ISRO projects on satellite image processing, data analysis, and predictive modelling.",
+    "field": "Data Science / IT",
+    "duration": "3 Months",
+    "minAge": 20,
+    "eligibleStatus": ["student", "graduate"],
+    "link": "https://www.isro.gov.in/internship-datascience"
+  },
+  {
+    "title": "DRDO Cybersecurity Internship",
+    "description": "Gain hands-on exposure to cybersecurity tools, defence systems, and network security at DRDO.",
+    "field": "Cybersecurity / IT",
+    "duration": "2 Months",
+    "minAge": 20,
+    "eligibleStatus": ["student", "graduate"],
+    "link": "https://www.drdo.gov.in/internship-cybersecurity"
+  }
+]
